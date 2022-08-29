@@ -25,7 +25,7 @@ docker run -d --name test-mongodb \
     docker logs test-mongodb --follow
 ```
 
-## Skapa NodeJS Dokcer Container
+## Skapa NodeJS Docker Container
 
 ```docker
 FROM node:12-alpine

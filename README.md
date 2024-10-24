@@ -9,7 +9,7 @@
 [Alpine](https://alpinelinux.org/)  
 : This is the Linux distro we use  
 
-### Common Docker Commands
+## Common Docker Commands
 
 `docker build [OPTIONS] PATH | URL | -`
 : Builds an image from a Dockerfile.
@@ -77,7 +77,16 @@
 
 <hr>
 
-### Auth Server
+## Docker Network
+
+> We create a virtual network where we can run business-frontend, admin-frontend, business-backend, admin-backend and auth-backend
+
+```bash
+docker network create --subnet=172.20.0.0/24 fwk-net
+docker network ls
+```
+
+## Auth Server
 
 ```bash
 cd ~
@@ -86,7 +95,7 @@ cd auth-server
 ```
 
 
-#### .dockerignore <heredoc
+### .dockerignore <heredoc
 
 ```bash
 cat > .dockerignore << 'EOF'
@@ -97,7 +106,7 @@ dist
 .env
 EOF
 ```
-#### Dockerfile <heredoc
+### Dockerfile <heredoc
 
 ```bash
 cat > Dockerfile << 'EOF'
@@ -130,35 +139,36 @@ CMD ["node", "src/service.js"]
 EOF
 ```
 
-#### Build and run your image
+### Build and run your image
 
 ```bash
 docker build -t auth-server .
 docker image ls
-docker network create --subnet=172.20.0.0/24 fwk-net
-docker network ls
 docker run --name fwk-auth --network fwk-net --ip 172.20.0.2 -p 3000:3000 -d auth-server
 docker ps
 docker inspect fwk-net
 ```
 
-#### Rebuild your image and run it
+### Rebuild your image and run it
+
+> When we change our application, we need to stop the container, remove the image, rebuild the image and then run it again
 
 ```bash
 docker stop fwk-auth
 docker rm fwk-auth
 docker image rm auth-server
 docker build -t auth-server .
+docker run --name fwk-auth --network fwk-net --ip 172.20.0.2 -p 3000:3000 -d auth-server
 ```
 
-#### Visit your running docker image (your virtual machine)
+### Visit your running docker image (your virtual machine)
 
 ```bash
 docker exec -it fwk-auth /bin/bash # ctrl-d - exit back to real machine
 ```
 <hr>
 
-### Dockerfile for frontend < heredoc
+## Docker for frontend
 
 > This is for a React app built with Vite.
 
@@ -169,7 +179,7 @@ cd ws
 cd frontend # Change to the name you  use for the business server
 ```
 
-#### .dockerignore <heredoc
+### .dockerignore <heredoc
 
 ```bash
 cat > .dockerignore << 'EOF'
@@ -180,7 +190,7 @@ dist
 .env
 EOF
 ```
-#### Dockerfile <heredoc
+### Dockerfile <heredoc
 
 ```bash
 cat > Dockerfile << 'EOF'
@@ -203,7 +213,7 @@ CMD ["npm", "run", "preview"]
 EOF
 ```
 
-#### vite.config.js <heredoc
+### vite.config.js <heredoc
 
 ```bash
 cat > vite.config.js << 'EOF'
@@ -233,6 +243,19 @@ EOF
 docker build -t frontend .
 docker run --name fwk-front --network fwk-net --ip 172.20.0.3 -p 3001:5000 -d frontend
 ```
+
+### Rebuild your image and run it
+
+> When we change our application, we need to stop the container, remove the image, rebuild the image and then run it again
+
+```bash
+docker stop fwk-front
+docker rm fwk-front
+docker image rm fwk-front
+docker build -t fwk-front .
+docker run --name fwk-front --network fwk-net --ip 172.20.0.3 -p 3001:5000 -d frontend
+```
+
 <hr>
 
 ## Bonus

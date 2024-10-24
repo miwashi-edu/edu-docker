@@ -98,7 +98,7 @@ docker run --name fwk-auth --network fwk-net --ip 172.20.0.2 -p 3000:3000 -d aut
 ### Visit your running docker image (your virtual machine)
 
 ```bash
-docker exec -it fwk-auth /bin/bash # ctrl-d - exit back to real machine
+docker exec -it fwk-auth bash # ctrl-d - exit back to real machine
 ```
 <hr>
 

@@ -3,7 +3,7 @@
 [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 : Here you download Docker Desktop for installation  
 
-[Docker Hub](https://hub.docker.com]
+[Docker Hub](https://hub.docker.com)
 : Here you find all virtual machines, enter node in the search and you find all images created by node.js - It is beneficial to register and login with Docker Desktop
 
 [Alpine](https://alpinelinux.org/)  

@@ -18,6 +18,7 @@
 ```bash
 docker network create --subnet=172.20.0.0/24 fwk-net
 docker network ls
+docker inspect fwk-net
 ```
 
 ## Auth Server
@@ -80,7 +81,6 @@ docker build -t auth-server .
 docker image ls
 docker run --name fwk-auth --network fwk-net --ip 172.20.0.2 -p 3000:3000 -d auth-server
 docker ps
-docker inspect fwk-net
 ```
 
 ### Rebuild your image and run it
@@ -191,6 +191,12 @@ docker run --name fwk-front --network fwk-net --ip 172.20.0.3 -p 3001:5000 -d fr
 ```
 
 <hr>
+
+## Inspect Your Network
+
+```bash
+docker inspect fwk-net
+```
 
 ## Common Docker Commands
 

@@ -1,8 +1,76 @@
 # edu-docker
 
-### Docker <heredoc
-
 [Alpine](https://alpinelinux.org/)
+
+### Common Docker Commands
+
+`docker build [OPTIONS] PATH | URL | -`
+: Builds an image from a Dockerfile.
+
+`docker run [OPTIONS] IMAGE [COMMAND] [ARG...]`
+: Runs a command in a new container from a specified image.
+
+`docker pull IMAGE`
+: Downloads an image from a Docker registry.
+
+`docker push IMAGE`
+: Uploads an image to a Docker registry.
+
+`docker ps [OPTIONS]`
+: Lists all running containers.
+
+`docker ps -a`
+: Lists all containers, both running and stopped.
+
+`docker images`
+: Lists all available images on the local system.
+
+`docker rmi IMAGE`
+: Removes one or more images from the local system.
+
+`docker stop CONTAINER`
+: Stops a running container.
+
+`docker start CONTAINER`
+: Starts a stopped container.
+
+`docker restart CONTAINER`
+: Restarts a running or stopped container.
+
+`docker exec [OPTIONS] CONTAINER COMMAND [ARG...]`
+: Runs a command in a running container.
+
+`docker rm CONTAINER`
+: Removes one or more containers.
+
+`docker logs [OPTIONS] CONTAINER`
+: Fetches the logs of a container.
+
+`docker inspect CONTAINER | IMAGE`
+: Returns detailed information about a container or image.
+
+`docker-compose up [OPTIONS]`
+: Builds, (re)creates, and starts containers as defined in a `docker-compose.yml` file.
+
+`docker-compose down`
+: Stops and removes containers, networks, and volumes defined in a `docker-compose.yml` file.
+
+`docker network ls`
+: Lists all networks.
+
+`docker network create NETWORK_NAME`
+: Creates a new network.
+
+`docker volume ls`
+: Lists all volumes.
+
+`docker volume create VOLUME_NAME`
+: Creates a new volume.
+
+
+<hr>
+
+### Auth Server
 
 #### .dockerignore <heredoc
 
@@ -73,6 +141,7 @@ docker build -t auth-server .
 ```bash
 docker exec -it fwk-auth /bin/bash # ctrl-d - exit back to real machine
 ```
+<hr>
 
 ### Dockerfile for frontend < heredoc
 

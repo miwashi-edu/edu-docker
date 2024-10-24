@@ -94,6 +94,7 @@ node_modules
 build
 dist
 .git
+.env
 EOF
 ```
 #### Dockerfile <heredoc
@@ -176,6 +177,7 @@ node_modules
 build
 dist
 .git
+.env
 EOF
 ```
 #### Dockerfile <heredoc

@@ -72,6 +72,13 @@
 
 ### Auth Server
 
+```bash
+cd ~
+cd ws
+cd auth-server
+```
+
+
 #### .dockerignore <heredoc
 
 ```bash
@@ -147,6 +154,13 @@ docker exec -it fwk-auth /bin/bash # ctrl-d - exit back to real machine
 
 > This is for a React app built with Vite.
 
+
+```bash
+cd ~
+cd ws
+cd frontend # Change to the name you  use for the business server
+```
+
 #### .dockerignore <heredoc
 
 ```bash
@@ -210,8 +224,7 @@ EOF
 docker build -t frontend .
 docker run --name fwk-front --network fwk-net --ip 172.20.0.3 -p 3001:5000 -d frontend
 ```
-
-
+<hr>
 
 ## Bonus
 

@@ -138,11 +138,11 @@ COPY . .
 
 RUN npm install
 
-RUN npm run build
-
 ENV VITE_AUTH_URL=http://172.20.0.2:3000
 
 ENV VITE_API_URL=http://172.20.0.4:3000
+
+RUN npm run build
 
 EXPOSE 5000
 
